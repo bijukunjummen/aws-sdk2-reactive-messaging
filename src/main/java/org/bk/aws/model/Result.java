@@ -5,8 +5,9 @@ package org.bk.aws.model;
  *
  * To be used this way:
  * For a case where the computation is successful:
+
  * <pre>
- * Result result = Result.of(() -> {
+ * Result result = Result.of(() -&gt; {
  *   return "hello";
  * });
  *
@@ -16,7 +17,7 @@ package org.bk.aws.model;
  * For the case where the computation results in a failure:
  *
  * <pre>
- * Result result = Result.of(() -> {
+ * Result result = Result.of(() -&gt; {
  *    throw new RuntimeException("failed");
  * });
  *

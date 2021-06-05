@@ -31,6 +31,7 @@ public interface EventHandler<T> {
      * @param task        - task represented as a Mono. Takes in the message as a parameter and take some action on
      *                    the message
      * @param clazz       - Type of message
+     * @param <V>         message type
      * @return pipeline which returns the output from the task
      */
     <V> Flux<ContentMessage<V>> processWithResultStream(int concurrency, String taskName, Function<T, Mono<V>> task, Class<T> clazz);
@@ -41,10 +42,9 @@ public interface EventHandler<T> {
      *
      * @param concurrency fixes up the concurrency in processing the messages
      * @param taskName    A descriptive name of the task that the handler will execute, to be used in log messages
-     * @param task        - task represented as a Mono. Takes in the message as a parameter and take some action on
-     *                    the message
+     * @param task        - task represented as a Mono. Takes in the message as a parameter and take some action on the message
+     * @param <V>         message type
      * @param clazz       - Type of message
-     * @return pipeline which returns the output from the task
      */
     <V> void processMessage(int concurrency, String taskName, Function<T, Mono<V>> task, Class<T> clazz);
 

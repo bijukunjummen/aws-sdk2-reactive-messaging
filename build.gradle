@@ -84,7 +84,7 @@ publishing {
         maven {
             def snapshotUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
             def releaseUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-            def isReleaseVersion = !version.toString().endsWith("SNAPSHOT")
+            def isReleaseVersion = !version.toString().endsWith("-SNAPSHOT")
 
             url = isReleaseVersion ? releaseUrl : snapshotUrl
             credentials {
