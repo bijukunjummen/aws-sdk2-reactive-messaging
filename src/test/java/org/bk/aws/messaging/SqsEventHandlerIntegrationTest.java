@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.bk.aws.junit5.SnsAndSqsTestExtension;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import reactor.core.publisher.Mono;
@@ -24,6 +25,7 @@ class SqsEventHandlerIntegrationTest {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
+    @Tag("integration")
     void testQueueStream() {
         SnsAsyncClient snsAsyncClient = snsAsyncClient();
         SqsAsyncClient sqsAsyncClient = sqsAsyncClient();

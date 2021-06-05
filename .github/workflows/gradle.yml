@@ -26,4 +26,4 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: |
-        ./gradlew check -Pbintray_user=dummy -Pbintray_api_key=dummy
+        ./gradlew check
