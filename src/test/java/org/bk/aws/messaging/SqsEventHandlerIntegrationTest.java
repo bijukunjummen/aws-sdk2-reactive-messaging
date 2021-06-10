@@ -47,8 +47,8 @@ class SqsEventHandlerIntegrationTest {
                         .processWithResultStream(2, "testTask",
                                 jsonNode -> Mono.just(jsonNode), JsonNode.class)
                 )
-                .assertNext(contentMessage -> assertThat(contentMessage.getBody()).isEqualTo(m1))
-                .assertNext(contentMessage -> assertThat(contentMessage.getBody()).isEqualTo(m2))
+                .assertNext(contentMessage -> assertThat(contentMessage.getBody().equals(m1) || contentMessage.getBody().equals(m2)).isTrue())
+                .assertNext(contentMessage -> assertThat(contentMessage.getBody().equals(m1) || contentMessage.getBody().equals(m2)).isTrue())
                 .then(() -> snsSqsEventHandler.setRunning(false))
                 .verifyComplete();
     }
