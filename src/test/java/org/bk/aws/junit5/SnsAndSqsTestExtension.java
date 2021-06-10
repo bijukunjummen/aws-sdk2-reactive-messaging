@@ -5,6 +5,7 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.testcontainers.containers.localstack.LocalStackContainer;
 import org.testcontainers.containers.wait.strategy.WaitStrategy;
+import org.testcontainers.utility.DockerImageName;
 import software.amazon.awssdk.core.SdkSystemSetting;
 
 import static org.testcontainers.containers.localstack.LocalStackContainer.Service.SNS;
@@ -22,7 +23,7 @@ public final class SnsAndSqsTestExtension implements BeforeAllCallback, AfterAll
         System.setProperty(SdkSystemSetting.AWS_SECRET_ACCESS_KEY.property(), "secret-key");
 
         try {
-            this.server = new LocalStackContainer().withServices(SNS, SQS);
+            this.server = new LocalStackContainer(DockerImageName.parse("localstack/localstack:0.12.12")).withServices(SNS, SQS);
             this.server.start();
             this.snsEndpoint = this.server.getEndpointConfiguration(SQS).getServiceEndpoint();
             this.sqsEndpoint = this.server.getEndpointConfiguration(SQS).getServiceEndpoint();

@@ -30,7 +30,7 @@ package org.bk.aws.model;
  * not throw an exception as it then breaks out of the reactive streams pipeline, Result will wrap it up
  * to be handled in a subsequent step of the pipeline.
  *
- * @param <T>
+ * @param <T> type of result
  */
 public interface Result<T> {
     boolean isSuccess();

@@ -40,7 +40,7 @@ public class SnsMessageSender {
     /**
      * Send a message to SNS
      *
-     * @param message
+     * @param message string format of the message to send to sns
      * @return a Mono that responds to completion signals and does not emit individual messages
      */
     public Mono<Void> send(String message) {
@@ -54,8 +54,9 @@ public class SnsMessageSender {
     /**
      * Send a message to SNS
      *
-     * @param message
+     * @param message to send to sns. Message will be serialized to json before being sent
      * @return a Mono that responds to completion signals and does not emit individual messages
+     * @param <T> type of message to be sent
      */
     public <T> Mono<Void> send(T message) {
         String messageAsString = getMessageAsString(message);

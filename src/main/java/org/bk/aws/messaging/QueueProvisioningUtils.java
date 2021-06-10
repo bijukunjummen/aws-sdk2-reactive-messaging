@@ -123,6 +123,7 @@ public final class QueueProvisioningUtils {
     /**
      * Generic queue creation method.
      *
+     * @param  sqsAsyncClient sqs client
      * @param createQueueRequest Queue Request
      * @return Mono containing queue details (URL and ARN)
      */

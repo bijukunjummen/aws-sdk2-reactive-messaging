@@ -41,7 +41,7 @@ public class SqsMessageSender {
     /**
      * Send a message to SNS
      *
-     * @param message
+     * @param message string format of the message to send to sqs
      * @return a Mono that responds to completion signals and does not emit individual messages
      */
     public Mono<Void> send(String message) {
@@ -55,7 +55,7 @@ public class SqsMessageSender {
     /**
      * Send a message to SNS
      *
-     * @param message
+     * @param message string format of the message to send to sqs
      * @param builder custom message builder
      * @return a Mono that responds to completion signals and does not emit individual messages
      */
@@ -71,8 +71,9 @@ public class SqsMessageSender {
     /**
      * Send a message to SNS
      *
-     * @param message
+     * @param message to send to sqs. Message will be serialized to json before being sent
      * @return a Mono that responds to completion signals and does not emit individual messages
+     * @param <T> - type of serialized message to be sent to sqs
      */
     public <T> Mono<Void> send(T message) {
         String messageAsString = getMessageAsString(message);
@@ -82,9 +83,10 @@ public class SqsMessageSender {
     /**
      * Send a message to SNS
      *
-     * @param message
+     * @param message to send to sqs. Message will be serialized to json before being sent
      * @param builder custom message builder
      * @return a Mono that responds to completion signals and does not emit individual messages
+     * @param <T> - type of serialized message to be sent to sqs
      */
     public <T> Mono<Void> send(T message, SendMessageRequest.Builder builder) {
         String messageAsString = getMessageAsString(message);
